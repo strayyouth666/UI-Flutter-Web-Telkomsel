@@ -8,25 +8,6 @@ class Article extends StatefulWidget {
 }
 
 class _ArticleState extends State<Article> {
-  int _currentIndex=0;
-  List cardList=[
-    const Item1(),
-    const Item2(),
-    const Item3(),
-    const Item4(),
-    const Item5(),
-    // const Item6(),
-    // const Item7(),
-  ];
-
-  List<T> map<T>(List list, Function handler) {
-    List<T> result = [];
-    for (var i = 0; i < list.length; i++) {
-      result.add(handler(i, list[i]));
-    }
-    return result;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,374 +21,95 @@ class _ArticleState extends State<Article> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                const SizedBox(width: 520,),
-                const Text("Artikel Terbaru", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold ),),
-                const SizedBox(width: 300,),
-                MaterialButton(
-                  onPressed: (){},
-                  child: const Text("Selengkapnya", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1 ),),
-                ) ],
+              children: const [
+                SizedBox(width: 520,),
+                Text("Artikel Terbaru", style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold ),),
+                SizedBox(width: 300,),
+                Text("Selengkapnya", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1 ),),
+              ],
             ),
           ),
           const SizedBox(height: 20,),
           Positioned(
-            child:  Column(
-              children: [
-                CarouselSlider(
-                  options: CarouselOptions(
-                  height: 200.0,
-                  viewportFraction: 0.4,
-                  enableInfiniteScroll: true,
-                  reverse: true,
-                  autoPlay: false,
-                  aspectRatio: 2.0,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                    _currentIndex = index;
-                    });
-                   },
-                  ),
-                items: cardList.map((card){
+            child: CarouselSlider(
+            options: CarouselOptions(
+            height: 600,
+            enlargeCenterPage: false,
+            viewportFraction: 1,
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 2),
+            aspectRatio: 18/8,
+            ),
+              items: ['pict/back-to-school-poin-CAROUSEL.png','pict/kau-dia-2--CAROUSEL.png'].map((i){
                 return Builder(
-                  builder:(BuildContext context){
+                  builder: (BuildContext context) {
                     return Container(
-                  height: MediaQuery.of(context).size.height*0.30,
-                  width: MediaQuery.of(context).size.width,
-                  child: Card(
-                  color: Colors.white,
-                  child: card,
+                      margin: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 120, top: 30),
+                            child: Column(
+                              children: [
+                                if(i == 'pict/bestdeal4g-JUL22-CAROUSEL.png')
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text("Best Deal di\nHarinya4G",style: TextStyle(color: Colors.white,fontSize: 50,fontWeight: FontWeight.bold),),
+                                      const SizedBox(height: 20,),
+                                      const Text("Aktifkan Paket Best Deal 4G sekarang dan nikmati\nkuota hingga 320GB di jaringan terbaik mulai dari\nRp.30.000!",style: TextStyle(color: Colors.white, fontSize: 20,fontWeight: FontWeight.normal),),
+                                      const SizedBox(height: 50,),
+                                      InkWell(
+                                        child: MaterialButton(
+                                          height: 60,
+                                          minWidth: 200,
+                                          color: Colors.red,
+                                          shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(30))),
+                                          onPressed: () {},
+                                          child: const Text("Selengkapnya",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.white),),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                                if(i == 'pict/iphone-SE-HERO-1_0.png')
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text("Terhebat di\nJaringan Terbaik",style: TextStyle(color: Colors.white, fontSize: 50,fontWeight: FontWeight.bold),),
+                                      const SizedBox(height: 20,),
+                                      const Text("Rasakan kehebatan iPhone SE (generasi ke-3)\ndengan harga bersahabat. Dapatkan penawaran\nbundling terbaik dari Telkomsel",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.normal),),
+                                      const SizedBox(height: 50,),
+                                      InkWell(
+                                        child: MaterialButton(
+                                          height: 60,
+                                          minWidth: 200,
+                                          color: Colors.red,
+                                          shape: const RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.all(Radius.circular(30))),
+                                          onPressed: () {},
+                                          child: const Text("Selengkapnya",style: TextStyle(fontSize: 16,fontWeight: FontWeight.bold, color: Colors.white),),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 60,),
+                          Image.asset(i),
+                        ],
                       ),
-                     );
-                   }
-                  );
-                 }).toList(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: map<Widget>(cardList, (index, url) {
-                  return Container(
-                  width: 10.0,
-                  height: 10.0,
-                  margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _currentIndex == index ? Colors.black : Colors.grey,
-                    ),
                     );
-                  }),
-                ),
-              ],
+                  },
+                );
+              }).toList(),
             ),
           ),
         ],
-      )
-    );
-  }
-}
-
-class Item1 extends StatelessWidget {
-  const Item1({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-            border: Border.all(color: Colors.grey)
-        ),
-        child: MaterialButton(
-          onPressed: (){},
-          child: Padding(
-            padding: const EdgeInsets.only(top: 25, left: 10),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Text(
-                    "13 Juli 2022",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12.0,
-                        fontWeight: FontWeight.w600
-                    )
-                ),
-                SizedBox(height: 14,),
-                Text("Telkomsel Raih\nPredikat Terbaik pada\nAjang'2022 Asia-...",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold
-                    )
-                ),
-                SizedBox(height: 14,),
-                Icon(Icons.arrow_forward,
-                color: Colors.red,),
-
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }
 }
-
-class Item2 extends StatelessWidget {
-  const Item2({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        decoration:  BoxDecoration(
-          color: Colors.white,
-            border: Border.all(color: Colors.grey)
-          
-        ),
-        child: MaterialButton(
-          onPressed: (){},
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                  "11 Juli 2022",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w600
-                  )
-              ),
-              Text(
-                  "Akselerasikan\nDigitalisasi UMKM,\nTelkomsel Ajak Para...",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold
-                  )
-              ),
-              SizedBox(height: 14,),
-              Icon(Icons.arrow_forward,
-                color: Colors.red,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Item3 extends StatelessWidget {
-  const Item3({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        decoration:   BoxDecoration(
-         color: Colors.white,
-            border: Border.all(color: Colors.grey)
-        ),
-        child: MaterialButton(
-          onPressed: (){},
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                  "08 Juli 2022",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w600
-                  )
-              ),
-
-              Text(
-                  "Telkomsel Salurkan\nHewan Kurban ke\n48.000 Penerima...",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold
-                  )
-              ),
-              SizedBox(height: 14,),
-              Icon(Icons.arrow_forward,
-                color: Colors.red,),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class Item4 extends StatelessWidget {
-  const Item4({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container( decoration:    BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey)
-      ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-                "05 Juli 2022",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 12.0,
-                    fontWeight: FontWeight.w600
-                )
-            ),
-            Text(
-                "Kolaborasi Telkomsel,\nSamsung dan Blibli\nHadirkan Program...",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold
-                )
-            ),
-            SizedBox(height: 14,),
-            Icon(Icons.arrow_forward,
-              color: Colors.red,),
-
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Item5 extends StatelessWidget {
-  const Item5({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      child: Container( decoration:    BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: Colors.grey)
-      ),
-        child: MaterialButton(
-          onPressed: (){},
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              Text(
-                  "05 Juli 2022",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w600
-                  )
-              ),
-              Text(
-                  "Kolaborasi Telkomsel,\nSamsung dan Blibli\nHadirkan Program...",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold
-                  )
-              ),
-              SizedBox(height: 14,),
-              Icon(Icons.arrow_forward,
-                color: Colors.red,),
-
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// class Item6 extends StatelessWidget {
-//   const Item6({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return InkWell(
-//       child: MaterialButton(
-//         onPressed: (){},
-//         child: Container( decoration:    BoxDecoration(
-//             color: Colors.white,
-//             border: Border.all(color: Colors.grey)
-//         ),
-//
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: const <Widget>[
-//               Text(
-//                   "05 Juli 2022",
-//                   style: TextStyle(
-//                       color: Colors.black,
-//                       fontSize: 12.0,
-//                       fontWeight: FontWeight.w600
-//                   )
-//               ),
-//               Text(
-//                   "Kolaborasi Telkomsel,\nSamsung dan Blibli\nHadirkan Program...",
-//                   style: TextStyle(
-//                       color: Colors.black,
-//                       fontSize: 18.0,
-//                       fontWeight: FontWeight.bold
-//                   )
-//               ),
-//               SizedBox(height: 14,),
-//               Icon(Icons.arrow_forward,
-//                 color: Colors.red,),
-//
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class Item7 extends StatelessWidget {
-//   const Item7({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return InkWell(
-//       child: MaterialButton(
-//         onPressed: (){},
-//         child: Container(
-//           decoration:    BoxDecoration(
-//             color: Colors.white,
-//               border: Border.all(color: Colors.grey)
-//           ),
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: const <Widget>[
-//               Text(
-//                   "08 Juli 2022",
-//                   style: TextStyle(
-//                       color: Colors.black,
-//                       fontSize: 12.0,
-//                       fontWeight: FontWeight.w600
-//                   )
-//               ),
-//
-//               Text(
-//                   "Telkomsel Salurkan\nHewan Kurban ke\n48.000 Penerima...",
-//                   style: TextStyle(
-//                       color: Colors.black,
-//                       fontSize: 18,
-//                       fontWeight: FontWeight.bold
-//                   )
-//               ),
-//               SizedBox(height: 14,),
-//               Icon(Icons.arrow_forward,
-//                 color: Colors.red,),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
