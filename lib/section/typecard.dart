@@ -1,4 +1,4 @@
-import 'dart:ui';
+// import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
@@ -19,6 +19,7 @@ class _TypeCardState extends State<TypeCard> {
         children: [
           const SizedBox(height: 100,),
           Container(
+            color: Colors.white,
             child: Column(
               children: [
                 const Text("Yang Bisa dilakukan di Telkomsel.com",style: TextStyle(fontSize: 30,fontWeight: FontWeight.bold),),
