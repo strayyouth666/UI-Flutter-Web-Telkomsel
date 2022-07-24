@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-// import 'package:dots_indicator/dots_indicator.dart';
-// import 'package:flutter/material.dart';
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Article extends StatefulWidget {
   const Article({Key? key}) : super(key: key);
@@ -19,8 +19,7 @@ class _ArticleState extends State<Article> {
     const Item3(),
     const Item4(),
     const Item5(),
-    // const Item6(),
-    // const Item7(),
+
   ];
 
   List<T> map<T>(List list, Function handler) {
