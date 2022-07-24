@@ -1,5 +1,7 @@
 // import 'dart:ui';
-
+// import 'package:dots_indicator/dots_indicator.dart';
+// import 'package:flutter/material.dart';
+// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class TypeCard extends StatefulWidget {

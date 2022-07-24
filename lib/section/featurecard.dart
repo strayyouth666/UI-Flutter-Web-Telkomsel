@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:intern_web/video.dart';
+// import 'package:dots_indicator/dots_indicator.dart';
+// import 'package:flutter/material.dart';
+// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class FeatureCard extends StatefulWidget {
   const FeatureCard({Key? key}) : super(key: key);
