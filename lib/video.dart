@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'dart:async';
+import 'dart:async';
 import 'package:url_launcher/link.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VideoPlayer extends StatefulWidget {
   const VideoPlayer({Key? key}) : super(key: key);
