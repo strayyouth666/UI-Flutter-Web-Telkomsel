@@ -24,14 +24,14 @@ class _CarouselBarState extends State<CarouselBar> {
   ];
 
 
-  // List<Widget> generateImageTiles(){
-  //   return images.map((element)=>ClipRRect(
-  //     child: Image.asset(element,
-  //       fit: BoxFit.cover,
-  //     ),
-  //     borderRadius: BorderRadius.circular(15),
-  //   )).toList();
-  // }
+  List<Widget> generateImageTiles(){
+    return images.map((element)=>ClipRRect(
+      child: Image.asset(element,
+        fit: BoxFit.cover,
+      ),
+      borderRadius: BorderRadius.circular(15),
+    )).toList();
+  }
 
   @override
   Widget build(BuildContext context) {
